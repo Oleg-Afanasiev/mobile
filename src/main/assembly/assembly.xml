@@ -4,18 +4,18 @@
           xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
     <id>assembly</id>
     <formats>
-        <format>zip</format>
+        <format>dir</format>
     </formats>
     <fileSets>
         <fileSet>
-            <directory>src/main/resources</directory>
+            <directory>cfg</directory>
             <outputDirectory>cfg</outputDirectory>
             <includes>
                 <include>*.properties</include>
             </includes>
         </fileSet>
         <fileSet>
-            <directory>src/main/resources</directory>
+            <directory>scripts</directory>
             <outputDirectory>bin</outputDirectory>
             <includes>
                 <include>*.bat</include>

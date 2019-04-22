@@ -3,12 +3,14 @@ package com.academy.mobile.service.soap;
 import com.academy.mobile.model.Subscriber;
 import com.academy.mobile.service.db.SubscriberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 @Endpoint
+@CrossOrigin(origins = "*")
 public class SubscriberWSImpl  {
 
     private static final String NAMESPACE_URI = "http://soap.service.mobile.academy.com";
