@@ -1,2 +1,2 @@
 #!/bin/sh
-java ../lib/*  com.academy.mobile.Application --spring.config.location=file:../cfg/application.properties
+java -cp "../lib/*:."  com.academy.mobile.Application --spring.config.location=file:../cfg/application.properties

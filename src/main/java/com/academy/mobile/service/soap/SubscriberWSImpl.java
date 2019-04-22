@@ -31,7 +31,7 @@ public class SubscriberWSImpl  {
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getSubscribersRequest")
     @ResponsePayload
-    public GetSubscribersResponse getSubscribers() {
+    public GetSubscribersResponse getAllSubscribers() {
         System.out.println(">> get subscribers ");
 
         GetSubscribersResponse response =  new GetSubscribersResponse();
@@ -42,7 +42,6 @@ public class SubscriberWSImpl  {
         return response;
     }
 
-    // TOdo fix enum
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "addSubscriberRequest")
     @ResponsePayload
     public AddSubscriberResponse addSubscriber(@RequestPayload AddSubscriberRequest request) {
@@ -64,9 +63,8 @@ public class SubscriberWSImpl  {
     @ResponsePayload
     public RemoveSubscriberResponse removeSubscriber(@RequestPayload RemoveSubscriberRequest request) {
         System.out.println(String.format(">> remove subscriber, id= %d ", request.getId()));
-        RemoveSubscriberResponse response = new RemoveSubscriberResponse();
-//        subscriberService.remove(id);
-        return response;
+        subscriberService.remove(request.getId());
+        return new RemoveSubscriberResponse();
     }
 
     // TODO
@@ -75,7 +73,12 @@ public class SubscriberWSImpl  {
     public UpdateSubscriberResponse updateSubscriber(@RequestPayload UpdateSubscriberRequest request) {
         System.out.println(String.format(">> update subscriber: id= %d", request.getId()));
         UpdateSubscriberResponse response = new UpdateSubscriberResponse();
-//        return subscriberService.save(subscriber);
+        if (request.getSubscriber() == null || request.getId() != request.getSubscriber().getId())
+            return response;
+
+        subscriberService.saveById(request.getId(), convertFrom(request.getSubscriber()));
+        response.setSubscriber(request.getSubscriber());
+
         return response;
     }
 
