@@ -18,7 +18,7 @@ public class Application {
      * @param args additional running params
      */
     public static void main(String[] args) throws ClassNotFoundException {
-        Class.forName("com.mysql.jdbc.Driver");
+        Class.forName("com.mysql.cj.jdbc.Driver");
 
         SpringApplication.run(Application.class, args);
     }
